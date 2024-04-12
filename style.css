@@ -9,6 +9,13 @@ body, html {
     background-color: rgb(250, 214, 170);
 
 }
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+}
+h3 {
+    font-size: 20px;
+}
 
 .grid {
     display: grid;
@@ -25,12 +32,13 @@ body, html {
     display: flex;
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 500px;
     background-size: cover;
     background-position: center;
     /* cursor: pointer; */
     overflow: hidden;
     opacity: 0.8;
+    margin: 10px;
 }
 
 /* Specific styling for the large center image to ensure it takes up both rows */
@@ -53,10 +61,20 @@ body, html {
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
     color: #fff;
     display: flex;
-    align-items: center;
+    align-items: end;
+    text-align: left;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.5s ease;
+    padding: 0px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.7;
 }
 
 .default-text {
@@ -72,6 +90,29 @@ body, html {
     flex-direction: column;
     opacity: 1;
     transition: opacity 0.5s ease;
+}
+
+.top {
+    margin: auto;
+    width: 60%;
+    font-size: 40px;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+    opacity: 1;
+    padding-top: 0;
+    padding-bottom: 200px;
+}
+
+.top h1 {
+    font-size: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.top p {
+    font-size: 16px;
+    width: 100%;
 }
 
 .perm-text {
@@ -92,11 +133,8 @@ body, html {
     font-size: 40px;
     margin-bottom: 5px;
 }
-.perm-text h2 {
-    font-size: 30px;
-}
-.perm-text h3 {
-    font-size: 20px;
+.perm-text p {
+    font-size: 16px;
 }
 
 .element:hover .description {
@@ -172,7 +210,7 @@ nav ul li a {
     font-style: italic;
 }
 
-h1 a {
+/* h1 a {
     color: #000;
     text-decoration: none;
 }
@@ -181,7 +219,7 @@ h1 a:hover {
 }
 nav a:hover {
     color: #666;
-}
+} */
 
 .white-shadow {
     color: white;
