@@ -1,0 +1,195 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: verdigris-mvb-pro-text, serif;
+    align-items: center;
+    background-color: rgb(250, 214, 170);
+
+}
+
+.grid {
+    display: grid;
+    /* grid-template-columns: minmax(250px, 1fr) minmax(250px, 2fr); */
+    grid-template-columns: 1fr 2fr 1fr; /* 3 columns: the middle one is wider */
+    grid-template-rows: 1fr 1fr; /* 2 rows of equal height */
+    gap: 10px;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.element {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    /* cursor: pointer; */
+    overflow: hidden;
+    opacity: 0.8;
+}
+
+/* Specific styling for the large center image to ensure it takes up both rows */
+#center {
+    grid-column: 2;
+    grid-row: 1 / span 2; /* Spans both rows */
+    height: 100%;
+}
+
+.header-nav-section {
+    padding: 30px;
+}
+
+.description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.default-text {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.perm-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+}
+
+.perm-text h1 {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.perm-text h2 {
+    font-size: 30px;
+}
+.perm-text h3 {
+    font-size: 20px;
+}
+
+.element:hover .description {
+    opacity: 1;
+}
+.element:hover .default-text {
+    opacity: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#faq-section {
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+    max-width: 800px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h3 {
+    color: #333;
+}
+
+.faq-item p {
+    color: #666;
+}
+
+.wedding-schedule {
+    /* background-color: #f0e6f6; */
+    padding: 20px;
+    text-align: left;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.wedding-schedule h2 {
+    color: #5d3737;
+}
+
+.schedule-list {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+.schedule-list li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.schedule-list time {
+    font-weight: bold;
+    color: #333;
+}
+
+.schedule-list location {
+    color: #666;
+    font-style: italic;
+}
+
+h1 a {
+    color: #000;
+    text-decoration: none;
+}
+h1 a:hover {
+    color: #666;
+}
+nav a:hover {
+    color: #666;
+}
+
+.white-shadow {
+    color: white;
+    text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+}
+
+#RSVP-section {
+    margin-left: 20px;
+    padding: 20px;
+    height: 100%;
+}

@@ -25,22 +25,31 @@ And in your body, put:
 
 <head>
     <style>
-        /* Inline CSS for bottom-bar */
+        :root {
+            /* --background-color: #ffcfa5; */
+            --text-color: rgba(186, 25, 0, 0.5);
+            --link-color: rgb(186, 25, 0);
+            /* --line-color: rgb(252, 212, 206); */
+        }
+
         #bottom-bar {
             font-size: 20px;
-            /* line-height: 45px; */
             margin-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #eeeeee;
-            color: #008CBA;
+            background-color: var(--background-color);
+            color: var(--text-color);
             position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
             font-size: 15px;
-            border-top: 2px solid rgb(170, 170, 170);
+            border-top: 2px solid var(--line-color);
+        }
+
+        p {
+            margin: 10px;
         }
 
         .left-content,
@@ -65,12 +74,12 @@ And in your body, put:
         .left-content a,
         .right-content a {
             display: inline;
-            color: #008CBA;
+            color: var(--text-color);
         }
 
         .left-content a:hover,
         .right-content a:hover {
-            color: #0077a8;
+            color: var(--link-color);
         }
 
         .name {
@@ -81,10 +90,10 @@ And in your body, put:
         }
 
         .name a {
-            color: #008CBA;
+            color: var(--text-color);
             text-decoration: none;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 0px;
+            margin-right: 5px;
         }
 
         .icons {
@@ -109,14 +118,11 @@ And in your body, put:
 <body>
     <div id="bottom-bar" style="clear: both;">
         <div class="left-content">
-            <p>
+            <!-- <p>
                 Site maintained by <a href="https://www.rickiheicklen.com">Ricki Heicklen</a>
-            </p>
+            </p> -->
         </div>
         <div class="right-content">
-            <!-- <div class="name">
-                <a href="https://www.rickiheicklen.com" target="_blank"><b>Ricki Heicklen</b></a>
-            </div> -->
             <div class="icons">
                 <p>
                     <a href="https://bayesshammai.substack.com/" target="_blank" class="icon substack-icon"><svg
@@ -129,6 +135,9 @@ And in your body, put:
                     <a href="https://github.com/RickiHeicklen" target="_blank"><i
                             class="icon fa fa-github fa-lg"></i></a>
                 </p>
+                <div class="name">
+                    <a href="https://www.rickiheicklen.com" target="_blank"><b>Ricki Heicklen</b></a>
+                </div>
             </div>
         </div>
 </body>
