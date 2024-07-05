@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Avital & Ricki</title>
+  <script src="https://platform.twitter.com/widgets.js"></script>
+  <link rel="stylesheet" type="text/css" href="./index.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <!-- Dynamically replace this. -->
+  <link rel="shortcut icon" href="./img/favicon2.ico" />
+  <meta property="og:title" content="Avital & Ricki" />
+  <meta property="og:description" content="Wedding website of Avital Morris and Ricki Heicklen" />
+  <!-- <meta property="og:image" content="icons/happy_tu_bshvat_cropped.png" /> -->
+  <!-- <meta property="og:url" content="www.itisajewishholidaytoday.com" /> -->
+
+  <script src="https://use.fontawesome.com/efc83ea599.js"></script>
+  <script>
+    fetch('bottom-bar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('include-bottom-bar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LL5HKKBDL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7LL5HKKBDL');
+  </script>
+  <script src="loadHeader.js"></script>
+</head>
+
+<body>
+  <div class="header-nav-section" id="header-nav"></div> 
+
+  <div class="container">
+
+
+    <section class="whas-section">
+      <img src="img/wet_hot_american_summer.png" alt="Summer Camp" style="width: 80%; opacity: 0.8;"> <!-- Map of Camp Kinder Ring -->
+    </section>
+
+    <section class="camp-info">
+      <h1>Camp Kinder Ring</h1>
+      <p>We're getting married at camp! Camp Kinder Ring is a Jewish summer camp located in Hopewell Junction, NY and run by The Workers Circle (formerly known as The Workmens Circle).</p>
+    </section>
+  </div>
+
+  <h1>Campus Maps</h1>
+
+  <div class="container">
+
+    <section class="map-section">
+      <img src="img/ckr_full_map.png" alt="Map of Camp Kinder Ring" class="camp-map"> <!-- Map of Camp Kinder Ring -->
+    </section>
+    <section class="map-section">
+      <img src="img/ckr_map.png" alt="Zoomed in map of Camp Kinder Ring" class="camp-map"> <!-- Map of Camp Kinder Ring -->
+    </section>
+  </div>
+
+
+
+  <footer>
+    <div id="include-bottom-bar"></div>
+  </footer>
+
+
+</body>
+
+</html>
