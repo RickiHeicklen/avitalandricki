@@ -234,6 +234,18 @@ nav a:hover {
     height: 100%;
 }
 
+.please-rsvp {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+
 .container {
     display: flex;
     justify-content: space-between;
