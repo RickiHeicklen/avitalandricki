@@ -176,6 +176,10 @@ nav ul li a {
     color: #666;
 }
 
+.faq-item a {
+    color: #5d3737;
+}
+
 .wedding-schedule {
     /* background-color: #f0e6f6; */
     padding: 20px;
