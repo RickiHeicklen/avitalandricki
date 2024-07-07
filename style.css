@@ -230,19 +230,18 @@ nav a:hover {
 
 #RSVP-section {
     margin-left: 20px;
-    padding: 20px;
     height: 100%;
 }
 
 .please-rsvp {
     margin: auto;
-    width: 60%;
+    max-width: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    padding: 20px;
+    padding-bottom: 20px;
 }
 
 
