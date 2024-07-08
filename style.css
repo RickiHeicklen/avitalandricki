@@ -276,3 +276,8 @@ nav a:hover {
   address {
     padding: 10px;
 }
+
+nav ul li a.active {
+    text-decoration: underline 1px;
+    text-underline-offset: 5px; /* Adjust the offset to move the underline lower */
+}
