@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,8 +10,7 @@
     <link rel="shortcut icon" href="./img/favicon2.ico" />
     <meta property="og:title" content="Avital & Ricki" />
     <meta property="og:description" content="Wedding website of Avital Morris and Ricki Heicklen" />
-    <!-- <meta property="og:image" content="icons/happy_tu_bshvat_cropped.png" /> -->
-    <!-- <meta property="og:url" content="www.itisajewishholidaytoday.com" /> -->
+
   
     <script src="https://use.fontawesome.com/efc83ea599.js"></script>
     <script>
@@ -37,7 +36,10 @@
 
     <div class="header-nav-section" id="header-nav"></div> 
 
-
+    <footer>
+        <div id="include-bottom-bar"></div>
+    </footer>
+    
     <h1>Shabbaton Booking and Payment</h1>
 
     <section class="shabbat-information">
@@ -106,23 +108,25 @@
         <label for="FridayBus">We may have a bus to the venue on Friday, depending on demand. Alternatively, feel free to coordinate carpools via <a href="https://bit.ly/shabbat-carpool">this spreadsheet.</a></label>
         <input type="text" id="FridayBus" name="entry.353919477" placeholder="If you're interested in taking the Friday bus, put 'Yes' here." required>
 
-        <label for="amount">Amount to pay ($36 - $360 per person):</label>
-        <input type="number" id="amount" name="entry.932032766" min="36" max="360" value="36" required>
+        <label for="amount">Amount to pay per person (recommended $36 - $360):</label>
+        <input type="number" id="amount" name="entry.932032766" min="36" required>
 
         <label for="OtherQuestions">Other Questions:</label>
         <input type="text" id="OtherQuestions" name="entry.407849913" placeholder="Please specify any other questions or concerns you have." required>
 
         <div id="paypal-button-container"></div>
+
     </form>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AceKlA6TjthA4vexmgE8c3g0BVl2NrlWHosTWPss2oSOhwhrFneJIxpNuRGaqOQiev87zB6h2d0rsUqM&currency=USD"></script>
     <script>
         const form = document.getElementById('bookingForm');
         const amountInput = document.getElementById('amount');
-        const guestsSelect = document.getElementById('guests');
+        const adultsSelect = document.getElementById('adultNumber');
+        const kidsSelect = document.getElementById('kidNumber');
         
         function updatePayPalButton() {
-            const amount = amountInput.value * guestsSelect.value;
+            const amount = amountInput.value * (adultsSelect.value + kidsSelect.value);
             document.getElementById('paypal-button-container').innerHTML = '';
             
             paypal.Buttons({
@@ -141,7 +145,7 @@
                         // Add transaction ID to form
                         const transactionIdInput = document.createElement('input');
                         transactionIdInput.type = 'hidden';
-                        transactionIdInput.name = 'entry.469551914';
+                        transactionIdInput.name = 'entry.729439330'; // this is for the paypal transaction id
                         transactionIdInput.value = details.id;
                         form.appendChild(transactionIdInput);
 
@@ -166,9 +170,12 @@
         // https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/viewform?usp=pp_url&entry.469551914=YourName&entry.1883004535=Email&entry.1405525784=NumPeople&entry.1275671850=PeopleNames&entry.41062795=DietaryNeeds&entry.284877517=Accomodations&entry.110343444=__other_option__&entry.110343444.other_option_response=SleepingPreferences&entry.932032766=PaymentNumber&entry.407849913=OtherQuestions
 
         amountInput.addEventListener('change', updatePayPalButton);
-        guestsSelect.addEventListener('change', updatePayPalButton);
+        adultsSelect.addEventListener('change', updatePayPalButton);
+        kidsSelect.addEventListener('change', updatePayPalButton);
+
         updatePayPalButton(); // Initial render
     </script>
     
+
 </body>
 </html>
