@@ -6,7 +6,6 @@
     <title>Avital & Ricki</title>
     <script src="https://platform.twitter.com/widgets.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <!-- Dynamically replace this. -->
     <link rel="shortcut icon" href="./img/favicon2.ico" />
     <meta property="og:title" content="Avital & Ricki" />
     <meta property="og:description" content="Wedding website of Avital Morris and Ricki Heicklen" />
@@ -53,23 +52,10 @@
         <p>We have reserved a block of cabins and bunks at Camp Kinder Ring for Friday and Saturday nights. The total cost for the Shabbat (including food) is $360 per person. We would love to have you for any amount that you wish to contribute to that between $36 and $360.</p>
     </section>
 
-        <!-- https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/viewform?usp=pp_url&
-    entry.469551914=Name&
-    entry.1883004535=Email&
-    entry.1405525784=420&
-    entry.959352133=AdultNames&
-    entry.565550636=27&
-    entry.711606456=KidNames&
-    entry.110343444=__other_option__&
-    entry.110343444.other_option_response=SleepingPreferencesRadio&
-    entry.2038316463=SleepingPreferencesText&
-    entry.41062795=DietaryNeeds&
-    entry.284877517=Accommodations&
-    entry.353919477=FridayBus&
-    entry.932032766=PaymentAmount&
-    entry.407849913=OtherQuestions -->
+    <iframe name="hidden_iframe" id="hidden_iframe" class="hidden" onload="formSubmitted()"></iframe>
 
-    <form id="bookingForm">
+    <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit();">
+        <!-- Your form fields here -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="entry.469551914" required>
         
@@ -89,55 +75,41 @@
             <input type="number" id="adultNumber" name="entry.1405525784" min="0" placeholder="0" required>
 
             <label for="adultNames">Names of All Adult Attendees:</label>
-            <textarea id="adultNames" name="entry.959352133" placeholder="Please enter the full names of all adult attendees, including yourself, one per line." required></textarea>
+            <textarea id="adultNames" name="entry.959352133" placeholder="Please enter the full names of all adult attendees, including yourself, one per line."></textarea>
 
             <label for="kidNumber">Number of Children:</label>
             <input type="number" id="kidNumber" name="entry.565550636" min="0" placeholder="0" required>
 
             <label for="kidNames">Names of All Children Attendees:</label>
-            <textarea id="kidNames" name="entry.711606456" placeholder="Please enter the full names of all children, one per line." required></textarea>
-
-
-            <!-- <label for="SleepingPreferencesRadio">Sleeping Preferences:</label>
-            <input type="radio" id="SleepingPreferencesRadio" name="entry.110343444" value="Cabin" required>
-            <label for="Cabin">Cabin</label>
-            <input type="radio" id="SleepingPreferencesRadio" name="entry.110343444" value="Bunk" required>
-            <label for="Bunk">Bunk</label>
-            <input type="radio" id="SleepingPreferencesRadio" name="entry.110343444" value="Other" required> -->
+            <textarea id="kidNames" name="entry.711606456" placeholder="Please enter the full names of all children, one per line."></textarea>
 
             <label for="SleepingPreferencesText">Sleeping Preferences:</label>
-            <input type="text" id="SleepingPreferencesText" name="entry.2038316463" placeholder="Please specify your sleeping preferences." required>
+            <input type="text" id="SleepingPreferencesText" name="entry.2038316463" placeholder="Please specify your sleeping preferences.">
 
             <label for="DietaryNeeds">Dietary Needs:</label>
-            <input type="text" id="DietaryNeeds" name="entry.41062795" placeholder="Please specify any dietary needs or restrictions." required>
+            <input type="text" id="DietaryNeeds" name="entry.41062795" placeholder="Please specify any dietary needs or restrictions.">
 
             <label for="Accommodations">Accommodations:</label>
-            <input type="text" id="Accommodations" name="entry.284877517" placeholder="Please specify any accommodations you require." required>
+            <input type="text" id="Accommodations" name="entry.284877517" placeholder="Please specify any other accommodations you require.">
 
             <label for="FridayBus">We may have a bus to the venue on Friday, depending on demand. Alternatively, feel free to coordinate carpools via <a href="https://bit.ly/shabbat-carpool">this spreadsheet.</a></label>
-            <input type="text" id="FridayBus" name="entry.353919477" placeholder="If you're interested in taking the Friday bus, put 'Yes' here." required>
+            <input type="text" id="FridayBus" name="entry.353919477" placeholder="If you're interested in taking the Friday bus, put 'Yes' here.">
 
             <label for="OtherQuestions">Other Questions:</label>
-            <input type="text" id="OtherQuestions" name="entry.407849913" placeholder="Please specify any other questions or concerns you have." required>
+            <input type="text" id="OtherQuestions" name="entry.407849913" placeholder="Please specify any other questions or concerns you have.">
 
-            <button type="button" id="proceedToBookRooms">Proceed to Book Rooms</button>
-            <button type="button" id="rsvpAndBookLater">RSVP and Book Later</button>
-
-            <div id="paymentSection" class="hidden">
-                <label for="amount">Amount to pay per person (recommended $36 - $360):</label>
-                <input type="number" id="amount" name="entry.932032766" min="36" required>
-                <div id="paypal-button-container"></div>
-            </div>
         </div>
 
-        <button type="button" id="rsvpButton" class="hidden">RSVP</button>
-        <div id="bookingOptions" class="hidden">
+        <button type="submit">Submit</button>
+
+
+        <div id="paypal-button-container" class="hidden">
             <label for="amount">Amount to pay per person (recommended $36 - $360):</label>
-            <input type="number" id="amount" name="entry.932032766" min="36" required>
-            <div id="paypal-button-container"></div>
+            <input type="number" id="amount" name="entry.932032766" min="36">
+            <div id="paypal-button"></div>
         </div>
-
     </form>
+
 
     <script>
         const paypalClientId = 'AceKlA6TjthA4vexmgE8c3g0BVl2NrlWHosTWPss2oSOhwhrFneJIxpNuRGaqOQiev87zB6h2d0rsUqM';
@@ -147,72 +119,70 @@
     </script>
 
     <script>
-        const form = document.getElementById('bookingForm');
-        const canAttend = document.getElementById('canAttend');
-        const formDetails = document.getElementById('formDetails');
-        const rsvpButton = document.getElementById('rsvpButton');
-        const bookingOptions = document.getElementById('bookingOptions');
-        const adultsSelect = document.getElementById('adultNumber');
-        const kidsSelect = document.getElementById('kidNumber');
-
-        canAttend.addEventListener('change', function() {
-        if (this.value === 'no') {
-                formDetails.classList.add('hidden');
-                bookingOptions.classList.add('hidden');
-                rsvpButton.classList.remove('hidden');
-            } else if (this.value === 'yes') {
-                formDetails.classList.remove('hidden');
-                checkAttendees();
-            } else {
-                formDetails.classList.add('hidden');
-                bookingOptions.classList.add('hidden');
-                rsvpButton.classList.add('hidden');
-            }
-        });
-
-        function checkAttendees() {
-            const adults = parseInt(adultsSelect.value, 10);
-            const kids = parseInt(kidsSelect.value, 10);
-            if (!isNaN(adults) && !isNaN(kids) && (adults > 0 || kids > 0)) {
-                rsvpButton.classList.remove('hidden');
-                bookingOptions.classList.remove('hidden');
-            } else {
-                rsvpButton.classList.add('hidden');
-                bookingOptions.classList.add('hidden');
-            }
+        function handleSubmit() {
+            // eventually we can comment out this function
+            const form = document.getElementById('bookingForm');
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+        
+            // You can now use 'data' object to log, validate, or modify the data
+            console.log(data);
+        
+            // Optionally, send data to your server here
+        
+            // Return true to continue with the form submission, false to prevent it
+            return true;
         }
 
-        adultsSelect.addEventListener('change', checkAttendees);
-        kidsSelect.addEventListener('change', checkAttendees);
+        document.getElementById('canAttend').addEventListener('change', function() {
+            const formDetails = document.getElementById('formDetails');
+            const kidsNum = document.getElementById('kidNumber');
+            const adultsNum = document.getElementById('adultNumber');
 
-        rsvpButton.addEventListener('click', function() {
-            const formData = new FormData(form);
-            console.log('Form data:', formData);
-            fetch('https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/viewform?usp=pp_url', {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(() => {
-                alert('RSVP completed! Thank you for your response.');
-                form.reset(); // Optionally reset the form
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error with your RSVP. Please contact us directly.');
-            });
+            if (this.value === 'yes') {
+                formDetails.classList.remove('hidden');
+                kidsNum.setAttribute('required', '');
+                adultsNum.setAttribute('required', '');
+            } else {
+                formDetails.classList.add('hidden');
+                kidsNum.removeAttribute('required');
+                adultsNum.removeAttribute('required');
+            }
         });
 
-        function updatePayPalButton() {
+        // function formSubmitted() {
+        //     const canAttend = document.getElementById('canAttend').value;
+        //     if (canAttend === 'yes') {
+        //         displayPayPalButton();
+        //     } else {
+        //     }
+        // }
 
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            const rsvpStatus = document.getElementById('canAttend').value;
+            if (rsvpStatus === 'yes') {
+                displayPayPalButton();
+            } else if (rsvpStatus === 'no') {
+                setTimeout(function() {
+                    alert('Thanks for RSVPing — we\'re sorry to hear you can\'t join us, and we hope to celebrate together another time.');
+                }, 1000);
+            }
+        });
 
-            document.getElementById('paypal-button-container').innerHTML = '';
-            
+        function displayPayPalButton() {
+            document.getElementById('paypal-button-container').classList.remove('hidden');
             paypal.Buttons({
-                fundingSource: paypal.FUNDING.PAYPAL,
                 createOrder: function(data, actions) {
-                    // const amount = amountInput.value * (adultsSelect.value + kidsSelect.value);
+
                     const amount = document.getElementById('amount');
+                    const kidsNum = document.getElementById('kidNumber');
+                    const adultsNum = document.getElementById('adultNumber');
+
                     const amountPerPerson = parseFloat(amount.value);
-                    const peopleTotal = parseInt(adultsSelect.value) + parseInt(kidsSelect.value);
+                    const peopleTotal = parseInt(adultsNum.value) + parseInt(kidsNum.value);
 
                     if (isNaN(amountPerPerson) || isNaN(peopleTotal) || peopleTotal === 0) {
                         alert('Please enter valid numbers for amount per person and number of attendees.');
@@ -220,14 +190,10 @@
                     }
                     const totalAmount =  (amountPerPerson * peopleTotal).toFixed(2); 
 
-                    console.log('Amount per person: ' + amountPerPerson);
-                    console.log('People total: ' + peopleTotal);
-                    console.log('Total amount: ' + totalAmount);
-
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: totalAmount
+                                value: totalAmount  // Adjust this value as needed
                             },
                             description: 'Shabbat Kallot Booking'
                         }]
@@ -235,6 +201,10 @@
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
+
+                        const form = document.getElementById('bookingForm');
+                        console.log(form);
+
                         // Add transaction ID to form
                         const transactionIdInput = document.createElement('input');
                         transactionIdInput.type = 'hidden';
@@ -244,7 +214,6 @@
 
                         // Submit to Google Form
                         const formData = new FormData(form);
-                        console.log('Form data:', formData);
                         fetch('https://docs.google.com/forms/d/185vI152rd-Af7lwCKVxd2KujoBSclhJXQSQ2Z0vKc_0/formResponse', {
                             method: 'POST',
                             body: formData,
@@ -256,17 +225,15 @@
                             console.error('Error:', error);
                             alert('There was an error submitting your booking. Please contact us directly.');
                         });
+
+                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                        // Optionally, handle post-transaction tasks here
                     });
                 }
-            }).render('#paypal-button-container');
+            }).render('#paypal-button');
         }
 
-        // https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/viewform?usp=pp_url&entry.469551914=YourName&entry.1883004535=Email&entry.1405525784=NumPeople&entry.1275671850=PeopleNames&entry.41062795=DietaryNeeds&entry.284877517=Accomodations&entry.110343444=__other_option__&entry.110343444.other_option_response=SleepingPreferences&entry.932032766=PaymentNumber&entry.407849913=OtherQuestions
-
-        amountInput.addEventListener('input', updatePayPalButton);
-
     </script>
-    
 
 </body>
 </html>

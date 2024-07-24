@@ -297,3 +297,8 @@ textarea { height: 100px; }
     text-align: left;
     max-width: 600px;
 }
+
+/* styles.css */
+.hidden {
+    display: none;
+}
