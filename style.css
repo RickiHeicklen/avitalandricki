@@ -1,3 +1,14 @@
+/* Define color variables */
+:root {
+    --main-bg-color: rgb(250, 214, 170);
+    --text-color-red: #5d3737;
+    --link-hover-opacity: 0.7;
+    --description-bg-color: rgba(0, 0, 0, 0.7);
+    --default-text-opacity: 1;
+    --text-color-dark: #333;
+    --text-color-light: #666;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -7,7 +18,7 @@ body, html {
     text-align: center;
     font-family: verdigris-mvb-pro-text, serif;
     align-items: center;
-    background-color: rgb(250, 214, 170);
+    background-color: var(--main-bg-color);
 }
 h2 {
     font-size: 18px;
@@ -15,7 +26,7 @@ h2 {
 }
 h3 {
     font-size: 20px;
-    color: #5d3737;
+    color: var(--text-color-red);
 }
 
 .grid {
@@ -173,11 +184,24 @@ nav ul li a {
 }
 
 .faq-item p {
-    color: #666;
+    color: var(--text-color-light); /* Example text color */
 }
 
 .faq-item a {
-    color: #5d3737;
+    color: var(--text-color-red);
+}
+
+/* Targeting the link within the label that has 'for' attribute set to 'FridayBus' */
+label[for="FridayBus"] a {
+    color: var(--text-color-red);
+    text-decoration: underline;
+    /* font-weight: bold; */
+}
+
+input[type="text"], textarea {
+    font-family: Arial, sans-serif; /* Example font */
+    font-size: 13.3px; /* Example font size */
+    color: var(--text-color-dark); /* Example text color */
 }
 
 .wedding-schedule {
@@ -189,7 +213,7 @@ nav ul li a {
 }
 
 .wedding-schedule h2 {
-    color: #5d3737;
+    color: var(--text-color-red);
 }
 
 .schedule-list {
@@ -204,11 +228,11 @@ nav ul li a {
 
 .schedule-list time {
     font-weight: bold;
-    color: #333;
+    color: var(--text-color-dark); /* Example text color */
 }
 
 .schedule-list location {
-    color: #666;
+    color: var(--text-color-light); /* Example text color */
     font-style: italic;
 }
 
@@ -217,10 +241,10 @@ nav ul li a {
     text-decoration: none;
 }
 h1 a:hover {
-    color: #666;
+    color: var(--text-color-light);
 }
 nav a:hover {
-    color: #666;
+    color: var(--text-color-dark);
 } */
 
 .white-shadow {
@@ -301,4 +325,24 @@ textarea { height: 100px; }
 /* styles.css */
 .hidden {
     display: none;
+}
+
+.button-style {
+    background-color: var(--text-color-red);
+    opacity: 0.8;
+    color: white; /* White text */
+    margin: 10px 0px; /* Margin around the button */
+    padding: 8px 12px; /* Padding around the text */
+    text-align: center; /* Center-aligned text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Necessary for dimensions */
+    font-size: 16px; /* Text size */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.button-style:hover {
+    opacity: 1;
 }
