@@ -39,7 +39,7 @@
         <div id="include-bottom-bar"></div>
     </footer>
     
-    <h1>Shabbaton Booking and Payment</h1>
+    <h1>Shabbat Kallot</h1>
 
     <section class="shabbat-information">
         <p>We hope you can join us for our wedding shabbaton!</p>
@@ -67,6 +67,7 @@
             <option value="">Select an option</option>
             <option value="yes">Yes!</option>
             <option value="no">Regretfully, no</option>
+            <option value="maybe">Some third, more complicated thing</option>
         </select>
 
         <div id="formDetails" class="hidden">
@@ -144,8 +145,12 @@
                 formDetails.classList.remove('hidden');
                 kidsNum.setAttribute('required', '');
                 adultsNum.setAttribute('required', '');
-            } else {
+            } else if (this.value === 'no') {
                 formDetails.classList.add('hidden');
+                kidsNum.removeAttribute('required');
+                adultsNum.removeAttribute('required');
+            } else if (this.value === 'maybe') {
+                formDetails.classList.remove('hidden');
                 kidsNum.removeAttribute('required');
                 adultsNum.removeAttribute('required');
             }
