@@ -277,7 +277,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40px auto;
+    margin: auto;
     max-width: 1000px;
   }
   .camp-info {
