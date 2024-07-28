@@ -417,3 +417,8 @@ textarea { height: 100px; }
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Adds shadow to text */
 }
+
+.birkon-text {
+    text-align: left;
+    padding-bottom: 20px;
+}
