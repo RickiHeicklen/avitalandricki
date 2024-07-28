@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Avital & Ricki</title>
+  <script src="https://platform.twitter.com/widgets.js"></script>
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <link rel="shortcut icon" href="./img/favicon2.ico" />
+  <meta property="og:title" content="Avital & Ricki" />
+  <meta property="og:description" content="Wedding website of Avital Morris and Ricki Heicklen" />
+
+  <script src="https://use.fontawesome.com/efc83ea599.js"></script>
+  <script>
+    fetch('bottom-bar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('include-bottom-bar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LL5HKKBDL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7LL5HKKBDL');
+  </script>
+  <script src="loadHeader.js"></script>
+</head>
+
+<body>
+  <div class="header-nav-section" id="header-nav"></div> 
+
+
+  <h1>Birkon</h1>
+
+  <div class="container">
+
+    <section class="map-section">
+        <p>For our wedding, we're making a Birkon with songs and pictures that bring us joy and that we hope to use each Shabbat in the home we build together. While most of these songs are in Hebrew (or Aramaic!), we are aiming to include translations and transliterations for as many as possible.</p>
+            <br>
+            <br>
+            Every act of translation is an act of interpretation, and we want our Birkon to reflect the interpretive tradition that has helped shape us on our religious and personal journeys and continue to guide our understanding of the texts we hold dear. As a result, we're inviting our friends and families to contribute translations of the songs we've chosen.
+            <br>
+            <br>
+            We have a spreadsheet here where you can sign up to translate a song, zemer, piyut, or table of contents that moves you so that we can have your voice with us at our Shabbat table. 
+        </p>
+        <iframe src="https://docs.google.com/spreadsheets/d/1crhPsKBfYPiBloOjrXZTHAY54EhPVtfWX8SsMoPEnxA/edit?gid=0#gid=0" width="100%" height="500"></iframe>
+    </section>
+
+  </div>
+
+
+
+  <footer>
+    <div id="include-bottom-bar"></div>
+  </footer>
+
+
+</body>
+
+</html>
