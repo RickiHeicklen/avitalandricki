@@ -12,7 +12,6 @@
 body, html {
     margin: 0;
     padding: 0;
-    padding-bottom: 30px;
     width: 100%;
     height: auto;
     text-align: center;
@@ -119,8 +118,8 @@ h1 {
     /* justify-content: center; */
     flex-direction: column;
     opacity: 1;
-    padding-top: 0;
-    padding-bottom: 200px;
+    padding-top: 200px;
+    padding-bottom: 100px;
 }
 
 .top p {
@@ -128,6 +127,9 @@ h1 {
     width: 100%;
 }
 
+.ruth {
+    padding-top: 200px;
+}
 .perm-text {
     position: absolute;
     top: 0;
@@ -170,6 +172,8 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #000;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Adds shadow to text */
 }
 
 #faq-section {
@@ -382,4 +386,34 @@ textarea { height: 100px; }
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.background-image {
+    background-image: url('https://res.cloudinary.com/lesswrong-2-0/image/upload/v1714180330/background_x2n8v1.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.title {
+    font-size: 80px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds shadow to text */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds shadow to text */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ruth {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Adds shadow to text */
 }

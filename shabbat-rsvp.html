@@ -126,7 +126,7 @@
         const paypalClientId = 'Adc_MmlTfkpTCCWyAh2bP5vG3ceFYZaYKXcbNFYg7H1pjCfbjxfqhZ57rOVCUOMu7rlTuyd91LpAJYQA' // live client id 
         // const paypalClientId = 'AceKlA6TjthA4vexmgE8c3g0BVl2NrlWHosTWPss2oSOhwhrFneJIxpNuRGaqOQiev87zB6h2d0rsUqM'; // sandbox client id
         const paypalScript = document.createElement('script');
-        paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD&intent=capture&commit=true`;
+        paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD&intent=capture&commit=true&disable-funding=paylater`;
         document.head.appendChild(paypalScript);
     </script>
 
@@ -218,16 +218,19 @@
             }
         });
 
+        document.getElementById('amount').addEventListener('change', displayPayPalButton);
+
         function displayPayPalButton() {
             document.getElementById('paypal-button-container').classList.remove('hidden');
 
             // Clear existing PayPal buttons if they exist
             document.getElementById('paypal-button').innerHTML = '';
 
+            const amount = parseFloat(document.getElementById('amount').value).toFixed(2);
+
             paypal.Buttons({
                 createOrder: function(data, actions) {
 
-                    const amount = parseFloat(document.getElementById('amount').value).toFixed(2);
                     if (amount <= 0) {
                         customAlert('Please enter a positive number for the amount.');
                         return; // Prevent further execution
@@ -265,15 +268,12 @@
                             body: formData,
                             mode: 'no-cors'
                         }).then(() => {
-                            customAlert('Booking completed! Your transaction ID is: ' + details.id);
+                            customAlert('Booking completed! You successfully paid $' + details.purchase_units[0].amount.value + '. Your transaction ID is: ' + details.id);
                             form.reset();
                         }).catch(error => {
                             console.error('Error:', error);
                             customAlert('There was an error submitting your booking. Please contact us directly.');
                         });
-
-                        customAlert('Transaction completed by ' + details.payer.name.given_name + '!');
-                        // Optionally, handle post-transaction tasks here
                     });
                 }
             }).render('#paypal-button');
