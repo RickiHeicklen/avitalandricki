@@ -49,7 +49,7 @@
         <p>We have reserved a block of cabins and bunks at Camp Kinder Ring for Friday and Saturday nights. We would love to have you join us. Any amount that you wish to contribute between $36 and $360 (the actual cost per person) would be lovely (no cost for children age two and under).</p>
     </section>
    
-    <iframe name="hidden_iframe" id="hidden_iframe" class="hidden" onload="formSubmitted()"></iframe>
+    <iframe name="hidden_iframe" id="hidden_iframe" class="hidden"></iframe>
 
     <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit();">
         <!-- Your form fields here -->
@@ -108,12 +108,19 @@
 
 
         <div id="paypal-button-container" class="hidden">
-            <label for="amount">Amount to pay per person (recommended $36 - $360):</label>
-            <input type="number" id="amount" name="entry.932032766" min="36">
+            <label for="amount">Amount to pay (recommended $36 - $360 per person):</label>
+            <input type="number" id="amount" name="entry.932032766" min="36" placeholder="Put the dollar amount you wish to contribute *in total*">
             <div id="paypal-button"></div>
         </div>
     </form>
 
+
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="alertText"></p>
+        </div>
+    </div>
 
     <script>
         const paypalClientId = 'Adc_MmlTfkpTCCWyAh2bP5vG3ceFYZaYKXcbNFYg7H1pjCfbjxfqhZ57rOVCUOMu7rlTuyd91LpAJYQA' // live client id 
@@ -124,6 +131,24 @@
     </script>
 
     <script>
+
+        function customAlert(msg) {
+            var modal = document.getElementById("customAlert");
+            var span = document.getElementsByClassName("close")[0];
+            var text = document.getElementById("alertText");
+            text.innerHTML = msg;
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+
         function handleSubmit() {
             // eventually we can comment out this function
             const form = document.getElementById('bookingForm');
@@ -184,37 +209,34 @@
                 displayPayPalButton();
             } else if (rsvpStatus === 'no') {
                 setTimeout(function() {
-                    alert('Thanks for RSVPing — we\'re sorry to hear you can\'t join us, and we hope to celebrate together another time.');
+                    customAlert('Thanks for RSVPing — we\'re sorry to hear you can\'t join us, and we hope to celebrate together another time.');
                 }, 1000);
             } else if (rsvpStatus === 'maybe') {
                 setTimeout(function() {
-                    alert('Thanks for the information! We\'ll try to get back to you by the end of the wedding.');
+                    customAlert('Thanks for the information! We\'ll try to get back to you by the end of the wedding.');
                 }, 1000);
             }
         });
 
         function displayPayPalButton() {
             document.getElementById('paypal-button-container').classList.remove('hidden');
+
+            // Clear existing PayPal buttons if they exist
+            document.getElementById('paypal-button').innerHTML = '';
+
             paypal.Buttons({
                 createOrder: function(data, actions) {
 
-                    const amount = document.getElementById('amount');
-                    const kidsNum = document.getElementById('kidNumber');
-                    const adultsNum = document.getElementById('adultNumber');
-
-                    const amountPerPerson = parseFloat(amount.value);
-                    const peopleTotal = parseInt(adultsNum.value) + parseInt(kidsNum.value);
-
-                    if (isNaN(amountPerPerson) || isNaN(peopleTotal) || peopleTotal === 0) {
-                        alert('Please enter valid numbers for amount per person and number of attendees.');
-                        return; // Stop further execution if validation fails
+                    const amount = parseFloat(document.getElementById('amount').value).toFixed(2);
+                    if (amount <= 0) {
+                        customAlert('Please enter a positive number for the amount.');
+                        return; // Prevent further execution
                     }
-                    const totalAmount =  (amountPerPerson * peopleTotal).toFixed(2); 
 
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: totalAmount  // Adjust this value as needed
+                                value: amount  // Adjust this value as needed
                             },
                             description: 'Shabbat Kallot Booking'
                         }],
@@ -243,14 +265,14 @@
                             body: formData,
                             mode: 'no-cors'
                         }).then(() => {
-                            alert('Booking completed! Your transaction ID is: ' + details.id);
+                            customAlert('Booking completed! Your transaction ID is: ' + details.id);
                             form.reset();
                         }).catch(error => {
                             console.error('Error:', error);
-                            alert('There was an error submitting your booking. Please contact us directly.');
+                            customAlert('There was an error submitting your booking. Please contact us directly.');
                         });
 
-                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                        customAlert('Transaction completed by ' + details.payer.name.given_name + '!');
                         // Optionally, handle post-transaction tasks here
                     });
                 }
