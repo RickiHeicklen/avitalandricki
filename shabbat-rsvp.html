@@ -42,14 +42,13 @@
     <h1>Shabbat Kallot</h1>
 
     <section class="shabbat-information">
-        <p>We would love for you to join us for Shabbat and Sunday at Camp Kinder Ring before our wedding day!</p>
-        <p>Arrival and check-in at camp are between 4:30 and 6:00pm on Friday September 20. We're excited to create a Shabbat environment together and ask that you keep Shabbat with us, including not using electronics (at least in public spaces). There will be plenty of prayer, learning, vegan feasting, singing, nature-walking, and lounging, and (if weather permits) a post-havdalah campfire by the lake. (If you need to leave Saturday night, the camp gate will re-open after Shabbat ends, at about 7:45pm.)</p>        
+        <p>We would love for you to join us for Shabbat and Sunday at Camp Kinder Ring before our wedding!</p>
+        <p>Arrival and check-in at camp are between 4:30pm and 6:00pm on Friday September 20. We're excited to create a Shabbat environment together and ask that you keep Shabbat with us, including not using electronics (at least in public spaces). There will be plenty of prayer, learning, vegan feasting, singing, nature-walking, and lounging, and (if weather permits) a post-havdalah campfire by the lake. (If you need to leave Saturday night, the camp gate will re-open after Shabbat ends, at about 7:45pm.)</p>        
         <p>On Sunday morning there will be shaharit and breakfast.</p>        
-
-        <p>Wedding festivities on Sunday start with a reception and tisch at 3pm, and the huppah is at 4pm.</p>
-        <p>We have reserved a block of cabins and bunks at Camp Kinder Ring for Friday and Saturday nights. We would love to have you join us. Any amount that you wish to contribute between $36 and $360 (the actual cost per person) would be lovely (no cost for children 2 and under).</p>
+        <p>Wedding festivities on Sunday start with a reception and tisch at 3:00pm, and the huppah is at 4:00pm.</p>
+        <p>We have reserved a block of cabins and bunks at Camp Kinder Ring for Friday and Saturday nights. We would love to have you join us. Any amount that you wish to contribute between $36 and $360 (the actual cost per person) would be lovely (no cost for children age two and under).</p>
     </section>
-
+   
     <iframe name="hidden_iframe" id="hidden_iframe" class="hidden" onload="formSubmitted()"></iframe>
 
     <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd78nSn4ni4X05CxruUc8LmyNe6rrnHaQO2cTD4xZpLj5JwVQ/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit();">
@@ -68,32 +67,41 @@
             <option value="maybe">Some third, more complicated thing</option>
         </select>
 
+        <div id="peopleDetails" class="hidden">
+
+            <label for="adultNumber">Number of adults you are RSVPing for:</label>
+            <input type="number" id="adultNumber" name="entry.1405525784" min="0" required>
+            
+            <label for="kidNumber">Number of children you are RSVPing for:</label>
+            <input type="number" id="kidNumber" name="entry.565550636" min="0" required>
+
+            <label for="adultNames">Names of all people you are RSVPing for:</label>
+            <textarea id="adultNames" name="entry.959352133" placeholder="Please enter full names for all, including any children age two and under."></textarea>
+
+        </div>
+
         <div id="formDetails" class="hidden">
 
-            <label for="adultNumber">Number of Adults:</label>
-            <input type="number" id="adultNumber" name="entry.1405525784" min="0" placeholder="0" required>
-            
-            <label for="kidNumber">Number of Children:</label>
-            <input type="number" id="kidNumber" name="entry.565550636" min="0" placeholder="0" required>
+            <!-- <label for="SleepingPreferencesText">Sleeping Preferences:</label>
+            <textarea id="SleepingPreferencesText" name="entry.2038316463" placeholder="A limited number of cabins are available. If you have a preference between a cabin and a bunk, please let us know here (including the strength of your preference)."></textarea> -->
 
-            <label for="adultNames">Names of All Attendees:</label>
-            <textarea id="adultNames" name="entry.959352133" placeholder="Please enter the full names of all attendees, including yourself."></textarea>
-
-            <label for="SleepingPreferencesText">Sleeping Preferences:</label>
-            <textarea id="SleepingPreferencesText" name="entry.2038316463" placeholder="A limited number of cabins are available. If you have a preference between a cabin and a bunk, please let us know here (including the strength of your preference)."></textarea>
-
-            <label for="DietaryNeeds">Dietary Needs:</label>
-            <input type="text" id="DietaryNeeds" name="entry.41062795" placeholder="Note that the food will be kosher, vegan, and nut free.">
+            <label for="DietaryNeeds">Dietary needs:</label>
+            <textarea id="DietaryNeeds" name="entry.41062795" placeholder="All food will be vegan, nut-free, and certified kosher by Go Kosher. If you have any other dietary restrictions, please let us know."></textarea>
 
             <label for="Accommodations">Accommodations:</label>
-            <input type="text" id="Accommodations" name="entry.284877517" placeholder="Please specify any other accommodations you require.">
+            <textarea id="Accommodations" name="entry.284877517" placeholder="If you have any specific housing or other needs (e.g. ADA compliant) please let us know."></textarea>
 
             <label for="FridayBus">We may have a bus to the venue on Friday, depending on demand. Alternatively, feel free to coordinate carpools via <a href="https://bit.ly/shabbat-carpool" target="_blank">this spreadsheet.</a></label>
-            <input type="text" id="FridayBus" name="entry.353919477" placeholder="If you're interested in taking the Friday bus, let us know here.">
+            <textarea id="FridayBus" name="entry.353919477" placeholder="If you're interested in taking the Friday bus, let us know here."></textarea>
 
             <label for="OtherQuestions">Other questions for us?</label>
-            <input type="text" id="OtherQuestions" name="entry.407849913" placeholder="We will try to get back to you by the end of the wedding">
+            <textarea id="OtherQuestions" name="entry.407849913" placeholder="We will try to get back to you by the end of the wedding"></textarea>
 
+        </div>
+
+        <div id="thirdOption" class="hidden">
+            <label for="thirdOptionText">Your third, more complicated thing:</label>
+            <textarea id="thirdOptionText" name="entry.1668097024" placeholder="Okay, what makes your situation special?"></textarea>
         </div>
 
         <button type="submit" class="button-style">Submit</button>
@@ -135,20 +143,28 @@
         }
 
         document.getElementById('canAttend').addEventListener('change', function() {
+            const peopleDetails = document.getElementById('peopleDetails');
             const formDetails = document.getElementById('formDetails');
+            const thirdOption = document.getElementById('thirdOption');
             const kidsNum = document.getElementById('kidNumber');
             const adultsNum = document.getElementById('adultNumber');
 
             if (this.value === 'yes') {
+                peopleDetails.classList.remove('hidden');
                 formDetails.classList.remove('hidden');
+                thirdOption.classList.add('hidden');
                 kidsNum.setAttribute('required', '');
                 adultsNum.setAttribute('required', '');
             } else if (this.value === 'no') {
+                peopleDetails.classList.remove('hidden');
                 formDetails.classList.add('hidden');
-                kidsNum.removeAttribute('required');
-                adultsNum.removeAttribute('required');
+                thirdOption.classList.add('hidden');
+                kidsNum.setAttribute('required');
+                adultsNum.setAttribute('required');
             } else if (this.value === 'maybe') {
-                formDetails.classList.remove('hidden');
+                peopleDetails.classList.add('hidden');
+                formDetails.classList.add('hidden');
+                thirdOption.classList.remove('hidden');
                 kidsNum.removeAttribute('required');
                 adultsNum.removeAttribute('required');
             }
@@ -169,6 +185,10 @@
             } else if (rsvpStatus === 'no') {
                 setTimeout(function() {
                     alert('Thanks for RSVPing — we\'re sorry to hear you can\'t join us, and we hope to celebrate together another time.');
+                }, 1000);
+            } else if (rsvpStatus === 'maybe') {
+                setTimeout(function() {
+                    alert('Thanks for the information! We\'ll try to get back to you by the end of the wedding.');
                 }, 1000);
             }
         });
