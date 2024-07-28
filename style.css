@@ -111,7 +111,7 @@ h1 {
 
 .top {
     margin: auto;
-    width: 60%;
+    width: 70%;
     font-size: 40px;
     display: flex;
     /* align-items: center; */
@@ -396,7 +396,7 @@ textarea { height: 100px; }
 }
 
 .title {
-    font-size: 80px;
+    font-size: 65px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds shadow to text */
     margin-top: 5px;
