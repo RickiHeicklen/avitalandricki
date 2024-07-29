@@ -288,7 +288,7 @@ nav a:hover {
   }
   .map-section {
     flex: 1;
-    /* padding: 10px; */
+    padding: 50px;
   }
   .whas-section {
     flex: 2;
